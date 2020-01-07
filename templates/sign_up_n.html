@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>twinheart || sign_up</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/floating-labels/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap/bootstrap.min.css' %}" rel="stylesheet" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/signing.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <form class="form-signin">
+
+        <div class="text-center mb-4">
+            <h1 class="h3 mb-3 font-weight-normal">twinheart</h1>
+            <p>sign up</p>
+        </div>
+
+        <div class="form-label-group">
+            <input type="text" id="username" class="form-control" placeholder="Email address" required="" autofocus="">
+            <label for="username">username</label>
+        </div>
+
+        <div class="form-label-group">
+            <input type="password" id="pass1" class="form-control" placeholder="Password" required="">
+            <label for="pass1">password</label>
+        </div>
+
+        <div class="form-label-group">
+            <input type="password" id="pass2" class="form-control" placeholder="Password" required="">
+            <label for="pass2">re-enter password</label>
+        </div>
+
+        <button class="btn btn-lg btn-secondary btn-block" type="submit">submit</button>
+
+        <p class="mt-5 mb-3 text-muted text-center">twinheart.co</p>
+    </form>
+
+
+</body>
+
+</html>

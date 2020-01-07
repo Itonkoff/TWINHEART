@@ -1,0 +1,139 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>twinheart || home</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap/bootstrap.min.css' %}" rel="stylesheet" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<header>
+
+    <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                    <h4 class="text-white">who are we?</h4>
+                    <p class="text-muted">we are an events management company. you tell us about the event you want to
+                        host, what services you require, make a booking and we take care of the rest ;-)</p>
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <strong>twinheart</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+        </div>
+    </div>
+
+</header>
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal"><strong></strong></h5>
+    <p class="lead float-right"><a href="#" style="text-decoration: none"><strong class="text-dark">blessing
+        jarawani</strong></a></p>
+</div>
+
+<main role="main">
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">bookings</h1>
+            <p class="lead text-muted">below is are events that you can book for services. select one ane you will
+                be redirected to the services available for that event. Enjoy!</p>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row" id="container">
+
+                {#                event cards are rendered here#}
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="text-muted ">
+    <div class="container">
+        <p>twinheart.co</p>
+    </div>
+</footer>
+
+<script src="{% static 'js/jQuery/jquery-3.4.1.min.js' %}" crossorigin="anonymous"></script>
+
+<script>
+    window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
+</script>
+<script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}" crossorigin="anonymous"></script>
+
+<script src="{% static 'js/data_models/booking.js' %}"></script>
+<script src="{% static 'js/data_models/event.js' %}"></script>
+<script src="{% static 'js/data_models/services.js' %}"></script>
+<script src="{% static 'js/view_holders/event.js' %}"></script>
+<script src="{% static 'js/home.js' %}"></script>
+<script>
+    function optimizeEvent(evnt_id, title) {
+        let evnt_ = {
+            evnt_id: evnt_id,
+            title: title
+        };
+
+        return evnt_;
+    }
+
+    function optimizeService(serv_id, title, price) {
+        let serv = {
+            serv_id: serv_id,
+            title: title,
+            price: price
+        };
+
+        return serv;
+    }
+
+    let services = [];
+
+    let pack = {
+        event_: {},
+        services: []
+    };
+
+    {% for event_ in events.events %}
+        pack.event_ = optimizeEvent({{ event_.event_id }}, '{{ event_.title}}');
+        {% for service in event_.services%}
+            services.push(optimizeService({{ service.service_id }}, '{{ service.title }}', {{ service.price }}));
+        {% endfor %}
+        pack.services = services;
+        displayEvents(pack);
+    {% endfor %}
+</script>
+
+</body>
+
+</html>
