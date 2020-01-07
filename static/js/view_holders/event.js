@@ -183,5 +183,5 @@ EventViewHolder.prototype.cardServicesCountDescription = function () {
 };
 
 EventViewHolder.prototype.getServicesCount = function () {
-    return this._event.services;
+    return this.event.getServicesCount;
 };

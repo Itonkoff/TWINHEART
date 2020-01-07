@@ -143,9 +143,9 @@ BookingViewHolder.prototype.createBodyTitle = function () {
 BookingViewHolder.prototype.createPriceFooterElement = function () {
     let footer = this.createHeaderContainer();
 
-    if (this._booking_status === 'pending') {
+    if (this._booking_status === '0') {
         footer.classList.replace('bg-dark', 'bg-warning'); //to change depending status
-    } else if (this._booking_status === 'confirmed') {
+    } else if (this._booking_status === '1') {
         footer.classList.replace('bg-dark', 'bg-success');
     } else {
         footer.classList.replace('bg-dark', 'bg-danger');
@@ -157,7 +157,13 @@ BookingViewHolder.prototype.createPriceFooterElement = function () {
     let headerTitleContainer = this.createHeaderTitleContainer();
 
     price.textContent = 'total : ' + this._booking_event.getTotalCostOFServices();
-    status.textContent = 'status: ' + this._booking_status;
+    if (this._booking_status === '0') {
+        status.textContent = 'status: pending' ;
+    } else if (this._booking_status==='1') {
+        status.textContent = 'status: confirmed';
+    } else {
+        status.textContent = 'status: rejected';
+    }
 
     headerTitleContainer.appendChild(price);
     headerTitleContainer.appendChild(status);
@@ -166,27 +172,3 @@ BookingViewHolder.prototype.createPriceFooterElement = function () {
 
     return footer;
 };
-
-
-function display() {
-    let container = document.getElementById('container');
-    let service1 = new Service(1, 'catering', 100);
-    let service2 = new Service(2, 'decoration', 100);
-    let service3 = new Service(3, 'planning', 100);
-    let service4 = new Service(4, 'venue', 100);
-
-    let event1 = new BookingEvent(1, 'meeting');
-    event1.addService(service1);
-    event1.addService(service2);
-    event1.addService(service3);
-
-    let booking = new Booking(event1);
-    booking.booking_date = '20/05/2020';
-    booking.booking_status='confirmed';
-
-    let viewHolder = new BookingViewHolder(booking);
-    container.appendChild(viewHolder.make());
-
-}
-
-display();

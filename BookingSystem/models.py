@@ -103,10 +103,12 @@ class BookedEvent:
         self.is_empty = False
 
     def load_services_from_database(self):
-        if not self.is_empty:
-            all_services = EventHasService.objects.all().filter(event_event=self.event_id)
-            for service in all_services:
-                self.services.append(service.service_service)
+        all_services = EventHasService.objects.all().filter(event_event=self.event_id)
+        for service in all_services:
+            _service = BookedService()
+            service_id = service.service_service.service_id
+            _service.load_service_from_database(service_id)
+            self.services.append(_service)
 
 
 class EventDetail:
@@ -124,12 +126,12 @@ class EventDetail:
         self.is_empty = False
 
     def load_services_from_database(self):
-            all_services = EventHasService.objects.all().filter(event_event=self.event_id)
-            for service in all_services:
-                _service = BookedService()
-                id=service.service_service.service_id
-                _service.load_service_from_database(id)
-                self.services.append(_service)
+        all_services = EventHasService.objects.all().filter(event_event=self.event_id)
+        for service in all_services:
+            _service = BookedService()
+            id = service.service_service.service_id
+            _service.load_service_from_database(id)
+            self.services.append(_service)
 
     def is_empty(self):
         return self.is_empty
@@ -185,6 +187,10 @@ class UserManager:
         if self.is_user_logged_in():
             return self.l_name + " " + self.f_name
 
+    def get_logged_in_user_id(self):
+        if self.is_user_logged_in():
+            return self.user_id
+
 
 class MassEvents:
     def __init__(self):
@@ -197,3 +203,27 @@ class MassEvents:
             evt_oj = EventDetail()
             evt_oj.load_event_from_database(event.event_id)
             self.events.append(evt_oj)
+
+
+class MassBooking:
+    def __init__(self):
+        self.bookings = []
+        self.collect()
+
+    def collect(self):
+        user = UserManager()
+        user_id = ''
+        if (user.is_user_logged_in()):
+            user_id = user.get_logged_in_user_id()
+
+        bookings = Booking.objects.all()  # to replace 1 with customer_id=user_id when login is implemented
+        for booking in bookings:
+            booked = BookedEvent()
+            booking_id = booking.booking_id
+
+            evnt = EventDetail()
+            event_id = booking.event.event_id
+
+            evnt.load_event_from_database(event_id)
+            booked.load_booking_from_database(booking_id)
+            self.bookings.append([booked,evnt])

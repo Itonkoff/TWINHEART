@@ -63,7 +63,7 @@ ServiceViewHolder.prototype.createCardHeader = function () {
     headerElement.classList.add('font-weight-normal');
     headerElement.classList.add('text-white');
 
-    headerElement.textContent = this._service.title;
+    headerElement.textContent = this._service.service_title;
 
     return headerElement;
 };
@@ -147,10 +147,10 @@ ServiceViewHolder.prototype.createRemoveButton = function () {
     return removeButton;
 };
 
-let service1 = new Service(1, 'catering', 100);
-let service2 = new Service(2, 'decoration', 100);
-let service3 = new Service(3, 'planning', 100);
-let service4 = new Service(4, 'venue', 100);
+let service1 = new Services(1, 'catering', 100);
+let service2 = new Services(2, 'decoration', 100);
+let service3 = new Services(3, 'planning', 100);
+let service4 = new Services(4, 'venue', 100);
 
 let serviceViewHolder1 = new ServiceViewHolder(service1);
 let serviceViewHolder2 = new ServiceViewHolder(service2);

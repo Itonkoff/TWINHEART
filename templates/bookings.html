@@ -23,146 +23,91 @@
 
 <body class="bg-white">
 
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom shadow-sm">
-        <h5 class="my-0 mr-md-auto font-weight-normal text-white"><strong>twinheart</strong></h5>
-        <p class="lead float-right "><a href="#" style="text-decoration: none"><strong class="text-white">blessing jarawani</strong></a></p>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal text-white"><strong>twinheart</strong></h5>
+    <p class="lead float-right "><a href="#" style="text-decoration: none"><strong class="text-white">blessing
+        jarawani</strong></a></p>
+</div>
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand mr-auto mr-lg-0 text-dark" href="https://getbootstrap.com/docs/4.3/examples/offcanvas/#">Offcanvas
+        navbar</a>
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas"></button>
+
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+        </form>
     </div>
 
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand mr-auto mr-lg-0 text-dark" href="https://getbootstrap.com/docs/4.3/examples/offcanvas/#">Offcanvas navbar</a>
-        <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas"></button>
+</nav>
 
-        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-            </form>
-        </div>
+<section class="jumbotron text-center bg-white ">
+    <div class="container bg-white">
+        <h1 class="jumbotron-heading">find all bookings you made below</h1>
+    </div>
+</section>
 
-    </nav>
-
-    <section class="jumbotron text-center bg-white ">
-        <div class="container bg-white">
-            <h1 class="jumbotron-heading">find all bookings you made below</h1>
-        </div>
-    </section>
-
-    <main role="main" id="container">
-{#        <div class="container">#}
-{#            <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-dark rounded shadow-sm">#}
-{#                <div class="lh-100">#}
-{#                    <h6 class="mb-0 text-white lh-100">business conference</h6>#}
-{#                </div>#}
-{#            </div>#}
-{##}
-{#            <div class="my-3 p-3 bg-white rounded shadow-sm">#}
-{#                <h6 class="border-bottom border-gray pb-2 mb-0">selected services</h6>#}
-{##}
-{#                <div class="media text-muted pt-3">#}
-{#                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray text-green">#}
-{#                        <strong class="d-block text-gray-dark">planning</strong>@ $200#}
-{#                    </p>#}
-{#                </div>#}
-{#                <div class="media text-muted pt-3">#}
-{#                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">#}
-{#                        <strong class="d-block text-gray-dark">decoration</strong>@ $200#}
-{#                    </p>#}
-{#                </div>#}
-{#                <div class="media text-muted pt-3">#}
-{#                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">#}
-{#                        <strong class="d-block text-gray-dark">photography</strong>@ $200#}
-{#                    </p>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-danger rounded shadow-sm">#}
-{#                <div class="lh-100">#}
-{#                    <h6 class="mb-0 text-white lh-100">total : $ 600</h6>#}
-{#                    <h6 class="mb-0 text-white lh-100">status : declined</h6>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#        <div class="container">#}
-{#            <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-dark rounded shadow-sm">#}
-{#                <div class="lh-100">#}
-{#                    <h6 class="mb-0 text-white lh-100">wedding</h6>#}
-{#                </div>#}
-{#            </div>#}
-{##}
-{#            <div class="my-3 p-3 bg-white rounded shadow-sm">#}
-{#                <h6 class="border-bottom border-gray pb-2 mb-0">selected services</h6>#}
-{##}
-{#                <div class="media text-muted pt-3">#}
-{#                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray text-green">#}
-{#                        <strong class="d-block text-gray-dark">planning</strong>@ $200#}
-{#                    </p>#}
-{#                </div>#}
-{#                <div class="media text-muted pt-3">#}
-{#                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">#}
-{#                        <strong class="d-block text-gray-dark">decoration</strong>@ $200#}
-{#                    </p>#}
-{#                </div>#}
-{#                <div class="media text-muted pt-3">#}
-{#                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">#}
-{#                        <strong class="d-block text-gray-dark">photography</strong>@ $200#}
-{#                    </p>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-warning rounded shadow-sm">#}
-{#                <div class="lh-100">#}
-{#                    <h6 class="mb-0 text-white lh-100">total : $ 600</h6>#}
-{#                    <h6 class="mb-0 text-white lh-100">status : pending</h6>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{##}
-{#        <div class="container">#}
-{#            <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-dark rounded shadow-sm">#}
-{#                <div class="lh-100">#}
-{#                    <h6 class="mb-0 text-white lh-100">wedding</h6>#}
-{#                </div>#}
-{#            </div>#}
-{##}
-{#            <div class="my-3 p-3 bg-white rounded shadow-sm">#}
-{#                <h6 class="border-bottom border-gray pb-2 mb-0">selected services</h6>#}
-{##}
-{#                <div class="media text-muted pt-3">#}
-{#                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray text-green">#}
-{#                        <strong class="d-block text-gray-dark">planning</strong>@ $200#}
-{#                    </p>#}
-{#                </div>#}
-{#                <div class="media text-muted pt-3">#}
-{#                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">#}
-{#                        <strong class="d-block text-gray-dark">decoration</strong>@ $200#}
-{#                    </p>#}
-{#                </div>#}
-{#                <div class="media text-muted pt-3">#}
-{#                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">#}
-{#                        <strong class="d-block text-gray-dark">photography</strong>@ $200#}
-{#                    </p>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-success rounded shadow-sm">#}
-{#                <div class="lh-100">#}
-{#                    <h6 class="mb-0 text-white lh-100">total : $ 600</h6>#}
-{#                    <h6 class="mb-0 text-white lh-100">status : confirmed</h6>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
+<main role="main" id="container">
+    {# bookings will apear here#}
 
 
+</main>
+<script src="{% static 'js/jQuery/jquery-3.4.1.min.js' %}" crossorigin="anonymous"></script>
+<script>
+    window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
+</script>
+<script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}" crossorigin="anonymous"></script>
+<script src="{% static 'js/data_models/services.js' %}"></script>
+<script src="{% static 'js/view_holders/service_list_item.js' %}"></script>
+<script src="{% static 'js/data_models/booking.js' %}"></script>
+<script src="{% static 'js/data_models/event.js' %}"></script>
+<script src="{% static 'js/view_holders/bookingViewHolder.js' %}"></script>
+<script src="{% static 'js/booking.js' %}"></script>
 
-    </main>
-    <script src="{% static 'js/jQuery/jquery-3.4.1.min.js' %}" crossorigin="anonymous"></script>
-    <script>
-        window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
-    </script>
-    <script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}" crossorigin="anonymous"></script>
-    <script src="{% static 'js/data_models/service.js' %}"></script>
-    <script src="{% static 'js/view_holders/service_list_item.js' %}"></script>
-    <script src="{% static 'js/data_models/booking.js' %}"></script>
+<script>
+    function optimizeEvent(evnt_id, title) {
+        return {
+            evnt_id: evnt_id,
+            title: title
+        };
+    }
 
-    <script src="{% static 'js/data_models/event.js' %}"></script>
-    <script src="{% static 'js/view_holders/bookingViewHolder.js' %}"></script>
+    function optimizeService(serv_id, title, price) {
+        return {
+            serv_id: serv_id,
+            title: title,
+            price: price
+        };
+    }
+
+    function optimizeBooking(booking_date, booking_status) {
+        return {
+            booking_date: booking_date,
+            booking_status: booking_status
+        };
+    }
+
+    let services = [];
+
+    let pack = {
+        booking: {},
+        event_: {},
+        services: []
+    };
+
+    {% for booking in bookings.bookings %}
+        pack.booking = optimizeBooking('{{ booking.0.date}}', '{{ booking.0.confirmed }}');
+        pack.event_ = optimizeEvent({{ booking.1.event_id }}, '{{ booking.1.title}}');
+        {% for service in booking.1.services%}
+            services.push(optimizeService({{ service.service_id }}, '{{ service.title }}', {{ service.price }}));
+        {% endfor %}
+        pack.services = services;
+
+        displayBookings(pack);
+    {% endfor %}
+</script>
 
 </body>
 

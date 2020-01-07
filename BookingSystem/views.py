@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from BookingSystem.models import MassEvents
+from BookingSystem.models import MassEvents, MassBooking
 
 
 def home(request):
@@ -34,4 +34,5 @@ def service(request):
 
 
 def bookings(request):
-    return render(request, 'bookings.html')
+    bookings_ = MassBooking()
+    return render(request, 'bookings.html', {'bookings': bookings_})

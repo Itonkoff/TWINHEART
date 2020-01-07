@@ -2,6 +2,8 @@ class BookingEvent {
     _event_id;
     _event_title;
     _event_services;
+    _serv_count;
+    _total_price;
 
     constructor(event_id, event_title) {
         this._event_id = event_id;
@@ -26,19 +28,18 @@ class BookingEvent {
 
     addService(service) {
         this._event_services.push(service);
+        this._serv_count++;
+        this._total_price += service.service_price;
     }
 
 
     getServiceCount() {
-        return this._event_services.length;
+        return this._serv_count;
     }
 
 
     getTotalCostOFServices() {
-        let total = 0;
-        this._event_services.forEach(service => total + service.service_price);
-
-        return total;
+        return this._total_price;
     }
 
 

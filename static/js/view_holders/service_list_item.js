@@ -1,3 +1,4 @@
+
 class ServiceListItem {
     _service;
 
@@ -42,6 +43,7 @@ ServiceListItem.prototype.createListItem = function () {
     listItem.classList.add('text-success');
 
     listItem.textContent = '$ ' + this._service._service_price;
+    total+=this._service._service_price;
 
     listItem.insertAdjacentElement('afterbegin', this.createServiceTitle());
 
