@@ -1,21 +1,15 @@
 class BookingViewHolder {
-    _booking_obj;
-    _booking_event;
-    _booking_date;
-    _booking_status;
     _display_mode;
+    booking;
+    _confirmation;
 
-    constructor(booking_obj) {
-        this._booking_obj = booking_obj;
-        this.extractBookingDetails();
+    set confirmation(value) {
+        this._confirmation = value.toString();
     }
 
-    extractBookingDetails() {
-        this._booking_event = this._booking_obj.booking_event;
-        this._booking_date = this._booking_obj.booking_date;
-        this._booking_status = this._booking_obj.booking_status;
+    constructor(booking) {
+        this.booking = booking;
     }
-
 
     set display_mode(value) {
         if (value === 1) {
@@ -51,9 +45,9 @@ BookingViewHolder.prototype.createOuterContainer = function () {
     return outerContainer;
 };
 
-BookingViewHolder.prototype.createHeaderElement = function () {
+BookingViewHolder.prototype.createHeaderElement = function (title) {
     let headerContainer = this.createHeaderContainer();
-    let headerTitle = this.createHeaderTitle();
+    let headerTitle = this.createHeaderTitle(title);
 
     headerContainer.appendChild(headerTitle);
     return headerContainer;
@@ -74,9 +68,9 @@ BookingViewHolder.prototype.createHeaderContainer = function () {
     return headerContainer;
 };
 
-BookingViewHolder.prototype.createHeaderTitle = function () {
+BookingViewHolder.prototype.createHeaderTitle = function (title_) {
     let titleContainer = this.createHeaderTitleContainer();
-    let title = this.createTitle();
+    let title = this.createTitle(title_);
 
     return titleContainer.appendChild(title);
 };
@@ -89,14 +83,14 @@ BookingViewHolder.prototype.createHeaderTitleContainer = function () {
     return titleContainer;
 };
 
-BookingViewHolder.prototype.createTitle = function () {
+BookingViewHolder.prototype.createTitle = function (title) {
     let titleElement = document.createElement('h6');
 
     titleElement.classList.add('mb-0');
     titleElement.classList.add('text-white');
     titleElement.classList.add('lh-100');
 
-    titleElement.textContent = this._booking_event.event_title + ' : ' + this._booking_date;
+    titleElement.textContent = title;
 
     return titleElement;
 };
@@ -107,12 +101,11 @@ BookingViewHolder.prototype.createBodyElement = function () {
 
     bodyContainer.appendChild(bodyTitle);
 
-    this._booking_event.event_services.forEach(service => {
-        let listViewHolder = new ServiceListItem(service).make();
-        bodyContainer.appendChild(listViewHolder);
-    });
-
     return bodyContainer;
+};
+
+BookingViewHolder.prototype.createServiceElement = function (service) {
+    return new ServiceListItem(service).make();
 };
 
 BookingViewHolder.prototype.createBodyContainer = function () {
@@ -140,12 +133,12 @@ BookingViewHolder.prototype.createBodyTitle = function () {
     return bodyTitle;
 };
 
-BookingViewHolder.prototype.createPriceFooterElement = function () {
+BookingViewHolder.prototype.createPriceFooterElement = function (total_price) {
     let footer = this.createHeaderContainer();
 
-    if (this._booking_status === '0') {
+    if (this._confirmation === '0') {
         footer.classList.replace('bg-dark', 'bg-warning'); //to change depending status
-    } else if (this._booking_status === '1') {
+    } else if (this._confirmation === '1') {
         footer.classList.replace('bg-dark', 'bg-success');
     } else {
         footer.classList.replace('bg-dark', 'bg-danger');
@@ -156,10 +149,10 @@ BookingViewHolder.prototype.createPriceFooterElement = function () {
 
     let headerTitleContainer = this.createHeaderTitleContainer();
 
-    price.textContent = 'total : ' + this._booking_event.getTotalCostOFServices();
-    if (this._booking_status === '0') {
-        status.textContent = 'status: pending' ;
-    } else if (this._booking_status==='1') {
+    price.textContent = 'total : ' + total_price.toString();
+    if (this._confirmation === '0') {
+        status.textContent = 'status: pending';
+    } else if (this._confirmation === '1') {
         status.textContent = 'status: confirmed';
     } else {
         status.textContent = 'status: rejected';

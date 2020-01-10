@@ -22,37 +22,63 @@
 </head>
 
 <body>
-    <form class="form-signin">
+<form class="form-signin" method="post" action="{% url 'next' %}">
 
-        <div class="text-center mb-4">
-            <h1 class="h3 mb-3 font-weight-normal">twinheart</h1>
-            <p>sign up</p>
+    {% csrf_token %}
+    <div class="text-center mb-4">
+        <h1 class="h3 mb-3 font-weight-normal">twinheart</h1>
+        <p>sign up</p>
+    </div>
+
+    <div class="form-label-group">
+        <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Email address" required=""
+               autofocus="">
+        <label for="last_name">last name</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="Password" required="">
+        <label for="first_name">first name</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="text" id="telephone" name="telephone" class="form-control" placeholder="Password" required="">
+        <label for="telephone">telephone</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="email" id="email" name="email" class="form-control" placeholder="Password" required="">
+        <label for="email">email</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="text" id="username" name="username" class="form-control" placeholder="Email address" required=""
+               autofocus="">
+        <label for="username">username</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="password" id="psw" name="pass1" class="form-control" placeholder="Password"
+               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+               required="">
+        <label for="pass1">password</label>
+    </div>
+
+    <div class="container">
+        <div id="message">
+            <h6 class="mt-5 mb-3 text-muted text-center">Password must contain the following:</h6>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
         </div>
+    </div>
 
-        <div class="form-label-group">
-            <input type="text" id="last_name" class="form-control" placeholder="Email address" required="" autofocus="">
-            <label for="last_name">last name</label>
-        </div>
+    <button class="btn btn-lg btn-secondary btn-block" type="submit">submit</button>
 
-        <div class="form-label-group">
-            <input type="text" id="first_name" class="form-control" placeholder="Password" required="">
-            <label for="first_name">first name</label>
-        </div>
-
-        <div class="form-label-group">
-            <input type="text" id="telephone" class="form-control" placeholder="Password" required="">
-            <label for="telephone">telephone</label>
-        </div>
-
-        <div class="form-label-group">
-            <input type="text" id="inputPassword" class="form-control" placeholder="Password" required="">
-            <label for="inputPassword">email</label>
-        </div>
-
-        <button class="btn btn-lg btn-secondary btn-block" type="submit">next</button>
-
-        <p class="mt-5 mb-3 text-muted text-center">twinheart.co</p>
-    </form>
+    <p class="mt-5 mb-3 text-muted text-center">twinheart.co</p>
+</form>
 
 
 </body>

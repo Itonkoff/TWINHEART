@@ -25,10 +25,19 @@
 
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto font-weight-normal text-white"><strong>twinheart</strong></h5>
-    <p class="lead float-right "><a href="#" style="text-decoration: none"><strong class="text-white">blessing
+    <p class="lead float-right "><a id="link" style="text-decoration: none"><strong class="text-white" id="username">blessing
         jarawani</strong></a></p>
 </div>
 
+<script>
+    var lnko = document.getElementById('link');
+    var lnko_racho = localStorage.getItem('user_id');
+    var url = '{% url 'bookings' 0 %}';
+    var url_a = url.replace('0',lnko_racho);
+    lnko.setAttribute('href',url_a);
+    var usernameElement =  document.getElementById('username');
+    usernameElement.textContent = localStorage.getItem('username');
+</script>
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
     <a class="navbar-brand mr-auto mr-lg-0 text-dark" href="https://getbootstrap.com/docs/4.3/examples/offcanvas/#">Offcanvas
         navbar</a>
@@ -45,7 +54,8 @@
 
 <section class="jumbotron text-center bg-white ">
     <div class="container bg-white">
-        <h1 class="jumbotron-heading">find all bookings you made below</h1>
+        <h1 class="jumbotron-heading">find all bookings you made below<br><small>for print-out press <code>Ctrl +
+            P</code></small></h1>
     </div>
 </section>
 
@@ -59,53 +69,45 @@
     window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
 </script>
 <script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}" crossorigin="anonymous"></script>
-<script src="{% static 'js/data_models/services.js' %}"></script>
+<script src="{% static 'js/data_models/models.js' %}"></script>
 <script src="{% static 'js/view_holders/service_list_item.js' %}"></script>
-<script src="{% static 'js/data_models/booking.js' %}"></script>
-<script src="{% static 'js/data_models/event.js' %}"></script>
 <script src="{% static 'js/view_holders/bookingViewHolder.js' %}"></script>
 <script src="{% static 'js/booking.js' %}"></script>
 
 <script>
-    function optimizeEvent(evnt_id, title) {
-        return {
-            evnt_id: evnt_id,
-            title: title
-        };
-    }
+    let booking_obj = new BookingViewHolder();
 
-    function optimizeService(serv_id, title, price) {
-        return {
-            serv_id: serv_id,
-            title: title,
-            price: price
-        };
-    }
 
-    function optimizeBooking(booking_date, booking_status) {
-        return {
-            booking_date: booking_date,
-            booking_status: booking_status
-        };
-    }
-
-    let services = [];
-
-    let pack = {
-        booking: {},
-        event_: {},
-        services: []
-    };
 
     {% for booking in bookings.bookings %}
-        pack.booking = optimizeBooking('{{ booking.0.date}}', '{{ booking.0.confirmed }}');
-        pack.event_ = optimizeEvent({{ booking.1.event_id }}, '{{ booking.1.title}}');
-        {% for service in booking.1.services%}
-            services.push(optimizeService({{ service.service_id }}, '{{ service.title }}', {{ service.price }}));
-        {% endfor %}
-        pack.services = services;
+        var total_price = 0;
+        var booking_container = booking_obj.createOuterContainer();
+        var title = booking_obj.createHeaderElement('{{ booking.1.title}}' + ' : ' + '{{ booking.0.date}}')
 
-        displayBookings(pack);
+        booking_container.appendChild(title);
+
+        var body = booking_obj.createBodyContainer();
+        body.appendChild(booking_obj.createBodyTitle());
+
+        {% for service in booking.1.services %}
+            service.id ={{ service.service_id }};
+            service.title = '{{ service.title }}';
+            service.price ={{ service.price }};
+            total_price = total_price +{{ service.price }};
+            var serviceElement = booking_obj.createServiceElement(service);
+            body.appendChild(serviceElement);
+        {% endfor %}
+        booking_obj.confirmation = {{ booking.0.confirmed }};
+
+        booking_container.appendChild(body);
+
+        var footer = booking_obj.createPriceFooterElement(total_price);
+
+        booking_container.appendChild(footer);
+
+        container.appendChild(booking_container);
+
+
     {% endfor %}
 </script>
 

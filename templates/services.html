@@ -22,169 +22,211 @@
 </head>
 
 <body>
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom shadow-sm">
-        <h5 class="my-0 mr-md-auto font-weight-normal text-white"><strong>twinheart</strong></h5>
-        <p class="lead float-right "><a href="#" style="text-decoration: none"><strong class="text-white">blessing jarawani</strong></a></p>
+
+<script src="{% static 'js/jQuery/jquery-3.4.1.min.js' %}" crossorigin="anonymous"></script>
+
+<script>
+    let selected_e = {{ id }};
+    let selected_s = [];
+</script>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal text-white"><strong>twinheart</strong></h5>
+    <p class="lead float-right "><a style="text-decoration: none" id="link"><strong class="text-white" id="username"></strong></a></p>
+</div>
+<script>
+    var lnko = document.getElementById('link');
+    var lnko_racho = localStorage.getItem('user_id');
+    var url = '{% url 'bookings' 0 %}';
+    var url_a = url.replace('0',lnko_racho);
+    lnko.setAttribute('href',url_a);
+    var usa = document.getElementById('username');
+    usa.textContent = localStorage.getItem('username');
+</script>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h6 class="display-4">services</h6>
+    <p class="lead">these are the available services for {{ title }} event. feel free to add all the services you need.
+        <strong>enjoy !</strong></p>
+</div>
+
+<div class="container">
+    <div class="card-deck mb-3 text-center" id="container">
+
+        <!--            <div class="card mb-4 shadow-sm">-->
+
+        <!--                <div class="card-header bg-dark">-->
+        <!--                    <h4 class="my-0 font-weight-normal text-white">Free</h4>-->
+        <!--                </div>-->
+
+        <!--                <div class="card-body">-->
+        <!--                    <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>-->
+
+        <!--                    <ul class="list-unstyled mt-3 mb-4">-->
+        <!--                        <li>10 users included</li>-->
+        <!--                        <li>2 GB of storage</li>-->
+        <!--                        <li>Email support</li>-->
+        <!--                        <li>Help center access</li>-->
+        <!--                    </ul>-->
+
+        <!--                    <div class="btn-group">-->
+        <!--                        <button type="button" class="btn btn-sm btn-secondary">add</button>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+
+        <!--            <div class="card mb-4 shadow-sm">-->
+
+        <!--                <div class="card-header bg-dark">-->
+        <!--                    <h4 class="my-0 font-weight-normal text-white">Pro</h4>-->
+        <!--                </div>-->
+
+        <!--                <div class="card-body">-->
+        <!--                    <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>-->
+
+        <!--                    <ul class="list-unstyled mt-3 mb-4">-->
+        <!--                        <li>20 users included</li>-->
+        <!--                        <li>10 GB of storage</li>-->
+        <!--                        <li>Priority email support</li>-->
+        <!--                        <li>Help center access</li>-->
+        <!--                    </ul>-->
+
+        <!--                    <div class="btn-group">-->
+        <!--                        <button type="button" class="btn btn-sm btn-secondary">add</button>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="card mb-4 shadow-sm">-->
+
+        <!--                <div class="card-header bg-dark">-->
+        <!--                    <h4 class="my-0 font-weight-normal text-white">Enterprise</h4>-->
+        <!--                </div>-->
+
+        <!--                <div class="card-body">-->
+        <!--                    <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>-->
+
+        <!--                    <ul class="list-unstyled mt-3 mb-4">-->
+        <!--                        <li>30 users included</li>-->
+        <!--                        <li>15 GB of storage</li>-->
+        <!--                        <li>Phone and email support</li>-->
+        <!--                        <li>Help center access</li>-->
+        <!--                    </ul>-->
+
+        <!--                    <div class="btn-group">-->
+        <!--                        <button type="button" class="btn btn-sm btn-secondary">add</button>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="card mb-4 shadow-sm">-->
+
+        <!--                <div class="card-header bg-dark">-->
+        <!--                    <h4 class="my-0 font-weight-normal text-white">Enterprise</h4>-->
+        <!--                </div>-->
+
+        <!--                <div class="card-body">-->
+        <!--                    <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>-->
+
+        <!--                    <ul class="list-unstyled mt-3 mb-4">-->
+        <!--                        <li>30 users included</li>-->
+        <!--                        <li>15 GB of storage</li>-->
+        <!--                        <li>Phone and email support</li>-->
+        <!--                        <li>Help center access</li>-->
+        <!--                    </ul>-->
+
+        <!--                    <div class="btn-group">-->
+        <!--                        <button type="button" class="btn btn-sm btn-secondary">add</button>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+
+        <!--            <div class="card mb-4 shadow-sm">-->
+
+        <!--                <div class="card-header bg-dark">-->
+        <!--                    <h4 class="my-0 font-weight-normal text-white">Enterprise</h4>-->
+        <!--                </div>-->
+
+        <!--                <div class="card-body">-->
+        <!--                    <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>-->
+
+        <!--                    <ul class="list-unstyled mt-3 mb-4">-->
+        <!--                        <li>30 users included</li>-->
+        <!--                        <li>15 GB of storage</li>-->
+        <!--                        <li>Phone and email support</li>-->
+        <!--                        <li>Help center access</li>-->
+        <!--                    </ul>-->
+
+        <!--                    <div class="btn-group">-->
+        <!--                        <button type="button" class="btn btn-sm btn-secondary">add</button>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+
+        <!--            <div class="card mb-4 shadow-sm">-->
+
+        <!--                <div class="card-header bg-dark">-->
+        <!--                    <h4 class="my-0 font-weight-normal text-white">Enterprise</h4>-->
+        <!--                </div>-->
+
+        <!--                <div class="card-body">-->
+        <!--                    <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>-->
+        <!--                    <ul class="list-unstyled mt-3 mb-4">-->
+        <!--                        <li>30 users included</li>-->
+        <!--                        <li>15 GB of storage</li>-->
+        <!--                        <li>Phone and email support</li>-->
+        <!--                        <li>Help center access</li>-->
+        <!--                    </ul>-->
+        <!--                    <div class="btn-group">-->
+        <!--                        <button type="button" class="btn btn-sm btn-secondary">add</button>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+
+        <div class="btn-group block">
+            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="function book() {
+            if(selected_s.length===0)
+                alert('please select at least one service');
+            else {
+                selected_s.push(selected_e);
+
+                let url = '{% url 'quote' 0 %}';
+                let url_str = selected_s.toString();
+
+                let new_url = url.replace('0',selected_s.toString());
+                console.log(new_url);
+                window.location.href = new_url;
+            }
+            }
+            book();">done
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary"
+                    onclick="window.location.href = '{% url 'home' %}';">cancel
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+<footer class="text-muted ">
+
+    <div class="container mb-3">
+        <p class="text-white">twinheart.co</p>
     </div>
 
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h6 class="display-4">services</h6>
-        <p class="lead">these are the available services for _selected_event. feel free to add all the services you need. <strong>enjoy !</strong></p>
-    </div>
-
-    <div class="container">
-        <div class="card-deck mb-3 text-center" id="container">
-
-<!--            <div class="card mb-4 shadow-sm">-->
-
-<!--                <div class="card-header bg-dark">-->
-<!--                    <h4 class="my-0 font-weight-normal text-white">Free</h4>-->
-<!--                </div>-->
-
-<!--                <div class="card-body">-->
-<!--                    <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>-->
-
-<!--                    <ul class="list-unstyled mt-3 mb-4">-->
-<!--                        <li>10 users included</li>-->
-<!--                        <li>2 GB of storage</li>-->
-<!--                        <li>Email support</li>-->
-<!--                        <li>Help center access</li>-->
-<!--                    </ul>-->
-
-<!--                    <div class="btn-group">-->
-<!--                        <button type="button" class="btn btn-sm btn-secondary">add</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            <div class="card mb-4 shadow-sm">-->
-
-<!--                <div class="card-header bg-dark">-->
-<!--                    <h4 class="my-0 font-weight-normal text-white">Pro</h4>-->
-<!--                </div>-->
-
-<!--                <div class="card-body">-->
-<!--                    <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>-->
-
-<!--                    <ul class="list-unstyled mt-3 mb-4">-->
-<!--                        <li>20 users included</li>-->
-<!--                        <li>10 GB of storage</li>-->
-<!--                        <li>Priority email support</li>-->
-<!--                        <li>Help center access</li>-->
-<!--                    </ul>-->
-
-<!--                    <div class="btn-group">-->
-<!--                        <button type="button" class="btn btn-sm btn-secondary">add</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="card mb-4 shadow-sm">-->
-
-<!--                <div class="card-header bg-dark">-->
-<!--                    <h4 class="my-0 font-weight-normal text-white">Enterprise</h4>-->
-<!--                </div>-->
-
-<!--                <div class="card-body">-->
-<!--                    <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>-->
-
-<!--                    <ul class="list-unstyled mt-3 mb-4">-->
-<!--                        <li>30 users included</li>-->
-<!--                        <li>15 GB of storage</li>-->
-<!--                        <li>Phone and email support</li>-->
-<!--                        <li>Help center access</li>-->
-<!--                    </ul>-->
-
-<!--                    <div class="btn-group">-->
-<!--                        <button type="button" class="btn btn-sm btn-secondary">add</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="card mb-4 shadow-sm">-->
-
-<!--                <div class="card-header bg-dark">-->
-<!--                    <h4 class="my-0 font-weight-normal text-white">Enterprise</h4>-->
-<!--                </div>-->
-
-<!--                <div class="card-body">-->
-<!--                    <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>-->
-
-<!--                    <ul class="list-unstyled mt-3 mb-4">-->
-<!--                        <li>30 users included</li>-->
-<!--                        <li>15 GB of storage</li>-->
-<!--                        <li>Phone and email support</li>-->
-<!--                        <li>Help center access</li>-->
-<!--                    </ul>-->
-
-<!--                    <div class="btn-group">-->
-<!--                        <button type="button" class="btn btn-sm btn-secondary">add</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            <div class="card mb-4 shadow-sm">-->
-
-<!--                <div class="card-header bg-dark">-->
-<!--                    <h4 class="my-0 font-weight-normal text-white">Enterprise</h4>-->
-<!--                </div>-->
-
-<!--                <div class="card-body">-->
-<!--                    <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>-->
-
-<!--                    <ul class="list-unstyled mt-3 mb-4">-->
-<!--                        <li>30 users included</li>-->
-<!--                        <li>15 GB of storage</li>-->
-<!--                        <li>Phone and email support</li>-->
-<!--                        <li>Help center access</li>-->
-<!--                    </ul>-->
-
-<!--                    <div class="btn-group">-->
-<!--                        <button type="button" class="btn btn-sm btn-secondary">add</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            <div class="card mb-4 shadow-sm">-->
-
-<!--                <div class="card-header bg-dark">-->
-<!--                    <h4 class="my-0 font-weight-normal text-white">Enterprise</h4>-->
-<!--                </div>-->
-
-<!--                <div class="card-body">-->
-<!--                    <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>-->
-<!--                    <ul class="list-unstyled mt-3 mb-4">-->
-<!--                        <li>30 users included</li>-->
-<!--                        <li>15 GB of storage</li>-->
-<!--                        <li>Phone and email support</li>-->
-<!--                        <li>Help center access</li>-->
-<!--                    </ul>-->
-<!--                    <div class="btn-group">-->
-<!--                        <button type="button" class="btn btn-sm btn-secondary">add</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-        </div>
-        <div class="d-flex justify-content-between align-items-center">
-
-            <div class="btn-group block">
-                <button type="button" class="btn btn-sm btn-outline-secondary">book event</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">cancel</button>
-            </div>
-
-        </div>
-    </div>
-
-
-
-    <footer class="text-muted ">
-
-        <div class="container mb-3">
-            <p class="text-white">twinheart.co</p>
-        </div>
-
-    </footer>
-<script src="{% static 'js/data_models/services.js' %}"></script>
+</footer>
+<script src="{% static 'js/data_models/models.js' %}"></script>
 <script src="{% static 'js/view_holders/service.js' %}"></script>
+<script src="{% static 'js/services.js' %}"></script>
+<script>
 
+    {% for service in services %}
+        service.id = {{ service.service_id }};
+        service.title = '{{ service.title }}';
+        service.price ={{ service.price }};
+
+        displayService(service);
+    {% endfor %}
+</script>
 
 </body>
 

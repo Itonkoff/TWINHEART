@@ -1,10 +1,8 @@
 
 class ServiceListItem {
-    _service;
-
-    constructor(service) {
-        this._service = service;
-    }
+    service;
+    constructor(service){
+        this.service = service;}
 }
 
 ServiceListItem.prototype.make = function () {
@@ -42,8 +40,7 @@ ServiceListItem.prototype.createListItem = function () {
     listItem.classList.add('border-gray');
     listItem.classList.add('text-success');
 
-    listItem.textContent = '$ ' + this._service._service_price;
-    total+=this._service._service_price;
+    listItem.textContent = '$ ' + this.service.price;
 
     listItem.insertAdjacentElement('afterbegin', this.createServiceTitle());
 
@@ -56,7 +53,7 @@ ServiceListItem.prototype.createServiceTitle = function () {
     serviceTitleElement.classList.add('d-block');
     serviceTitleElement.classList.add('text-gray-dark');
 
-    serviceTitleElement.textContent = this._service._service_title;
+    serviceTitleElement.textContent = this.service.title;
 
     return serviceTitleElement;
 

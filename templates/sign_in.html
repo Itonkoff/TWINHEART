@@ -22,27 +22,35 @@
 </head>
 
 <body>
-    <form class="form-signin">
+<form class="form-signin" method="post" action="{% url 'home' %}">
 
-        <div class="text-center mb-4">
-            <h1 class="h3 mb-3 font-weight-normal">twinheart</h1>
-            <p>sign in</p>
-        </div>
+    {% csrf_token %}
 
-        <div class="form-label-group">
-            <input type="text" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-            <label for="inputEmail">username</label>
-        </div>
+    <div class="text-center mb-4">
+        <h1 class="h3 mb-3 font-weight-normal">twinheart</h1>
+        <p>sign in</p>
+    </div>
 
-        <div class="form-label-group">
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-            <label for="inputPassword">password</label>
-        </div>
+    <div class="form-label-group">
+        <input type="text" id="inputUName" name="u_name" class="form-control" placeholder="Email address" required="" autofocus="">
+        <label for="inputEmail">username</label>
+    </div>
 
-        <button class="btn btn-lg btn-secondary btn-block" type="submit">submit</button>
+    <div class="form-label-group">
+        <input type="password" id="inputPassword" name="psswrd" class="form-control" placeholder="Password" required="">
+        <label for="inputPassword">password</label>
+    </div>
+    <div class="checkbox mb-3">
+        <label>
+            <a href="{% url 'sign_up' %}"><small>sign up if you dont have an account</small></a>
+        </label>
+    </div>
 
-        <p class="mt-5 mb-3 text-muted text-center">twinheart.co</p>
-    </form>
+    <button class="btn btn-lg btn-secondary btn-block" type="submit">submit
+    </button>
+
+    <p class="mt-5 mb-3 text-muted text-center">twinheart.co</p>
+</form>
 
 
 </body>

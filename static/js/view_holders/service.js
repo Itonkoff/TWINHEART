@@ -1,7 +1,11 @@
 class ServiceViewHolder {
     service;
-    constructor(service){
+    _id;
+
+
+    constructor(service) {
         this.service = service;
+        this._id = this.service.id;
     }
 }
 
@@ -26,8 +30,8 @@ ServiceViewHolder.prototype.join = function () {
     let featuresList = this.createFeaturesList();
 
     let buttonGroupContainer = this.createButtonGroupContainer();
-    let addButton = this.createAddButton();
-    let removeButton = this.createRemoveButton();
+    let addButton = this.createAddButton(this._id);
+    let removeButton = this.createRemoveButton(this._id);
 
     buttonGroupContainer.appendChild(addButton);
     buttonGroupContainer.appendChild(removeButton);
@@ -63,7 +67,7 @@ ServiceViewHolder.prototype.createCardHeader = function () {
     headerElement.classList.add('font-weight-normal');
     headerElement.classList.add('text-white');
 
-    headerElement.textContent = this._service.service_title;
+    headerElement.textContent = this.service.title;
 
     return headerElement;
 };
@@ -82,7 +86,7 @@ ServiceViewHolder.prototype.priceDescription = function () {
     priceElement.classList.add('card-title');
     priceElement.classList.add('pricing-card-title');
 
-    priceElement.innerHTML = '$' + this.service.se + '';
+    priceElement.innerHTML = '$' + this.service.price + '';
 
     // priceElement.insertAdjacentElement('beforend', this.currencyElement());
 
@@ -107,7 +111,7 @@ ServiceViewHolder.prototype.createButtonGroupContainer = function () {
     return buttonGroupContainer;
 };
 
-ServiceViewHolder.prototype.createAddButton = function () {
+ServiceViewHolder.prototype.createAddButton = function (t) {
     let addButton = document.createElement('button');
 
     addButton.setAttribute('type', 'button');
@@ -118,8 +122,20 @@ ServiceViewHolder.prototype.createAddButton = function () {
 
     addButton.textContent = 'add';
 
+    function logga() {
+        var doesnt_have = true;
+        selected_s.forEach(function (value, index) {
+            if (value == t)
+                doesnt_have = false
+        });
+        if (doesnt_have)
+            selected_s.push(t);
+
+        console.log(selected_s);
+    }
+
     addButton.addEventListener('click', function () {
-        alert('service ' + 'has been added');
+        logga()
     });
 
     return addButton;
@@ -129,7 +145,7 @@ ServiceViewHolder.prototype.createFeaturesList = function () {
     return undefined;
 };
 
-ServiceViewHolder.prototype.createRemoveButton = function () {
+ServiceViewHolder.prototype.createRemoveButton = function (t) {
     let removeButton = document.createElement('button');
 
     removeButton.setAttribute('type', 'button');
@@ -140,26 +156,24 @@ ServiceViewHolder.prototype.createRemoveButton = function () {
 
     removeButton.textContent = 'remove';
 
+    function logga() {
+        selected_s.forEach(function (value) {
+            var present = false;
+            selected_s.forEach(function (value) {
+                if (value === t)
+                    present = true;
+            });
+            if (present) {
+                var ind = selected_s.indexOf(t);
+                selected_s.splice(ind, 1);
+            }
+            console.log(selected_s);
+        });
+    }
+
     removeButton.addEventListener('click', function () {
-        alert('service ' + 'has been removed');
+        logga();
     });
 
     return removeButton;
 };
-
-let service1 = new Services(1, 'catering', 100);
-let service2 = new Services(2, 'decoration', 100);
-let service3 = new Services(3, 'planning', 100);
-let service4 = new Services(4, 'venue', 100);
-
-let serviceViewHolder1 = new ServiceViewHolder(service1);
-let serviceViewHolder2 = new ServiceViewHolder(service2);
-let serviceViewHolder3 = new ServiceViewHolder(service3);
-let serviceViewHolder4 = new ServiceViewHolder(service4);
-
-let container = document.getElementById('container');
-
-container.appendChild(serviceViewHolder1.make());
-container.appendChild(serviceViewHolder2.make());
-container.appendChild(serviceViewHolder3.make());
-container.appendChild(serviceViewHolder4.make());
