@@ -33,9 +33,9 @@
     var lnko = document.getElementById('link');
     var lnko_racho = localStorage.getItem('user_id');
     var url = '{% url 'bookings' 0 %}';
-    var url_a = url.replace('0',lnko_racho);
-    lnko.setAttribute('href',url_a);
-    var usernameElement =  document.getElementById('username');
+    var url_a = url.replace('0', lnko_racho);
+    lnko.setAttribute('href', url_a);
+    var usernameElement = document.getElementById('username');
     usernameElement.textContent = localStorage.getItem('username');
 </script>
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
@@ -54,8 +54,12 @@
 
 <section class="jumbotron text-center bg-white ">
     <div class="container bg-white">
-        <h1 class="jumbotron-heading">find all bookings you made below<br><small>for print-out press <code>Ctrl +
-            P</code></small></h1>
+        {% if bookings.bookings|length == 0 %}
+            <h1 class="jumbotron-heading">you have no bookings yet</h1>
+        {% else %}
+            <h1 class="jumbotron-heading">find all bookings you made below<br><small>for print-out press <code>Ctrl +
+                P</code></small></h1>
+        {% endif %}
     </div>
 </section>
 

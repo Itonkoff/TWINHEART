@@ -77,9 +77,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bookings',
         'USER': 'root',
-        'PASSWORD': 'br16ht0n',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
